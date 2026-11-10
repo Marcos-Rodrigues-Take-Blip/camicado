@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blip & Camicado | Black Friday de Natal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mountains+of+Christmas:wght@700&display=swap');
+        * { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-natal { font-family: 'Mountains of Christmas', cursive; }
+        .scrollbar-none::-webkit-scrollbar { display: none; }
+        .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+        .listras { background: repeating-linear-gradient(90deg, #b91c1c 0 28px, #14532d 28px 56px); height: 6px; }
+    </style>
+</head>
+<body class="bg-[#0b0b0b] text-white min-h-screen flex flex-col overflow-x-hidden">
+
+    <!-- BARRA DE PROMOÇÃO -->
+    <div class="bg-amber-400 text-black text-[10px] tracking-widest text-center py-2 px-4 uppercase font-extrabold">
+        Black Friday de Natal • Frete grátis acima de R$ 250 • Até 6x sem juros
+    </div>
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-40 bg-[#0b0b0b]/90 backdrop-blur-md border-b border-white/10 px-6 py-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-natal text-3xl text-amber-400 leading-none">Blip &amp; Camicado</a>
+            <nav class="hidden md:flex space-x-10 text-xs font-bold tracking-widest uppercase text-gray-400">
+                <a href="#" class="text-white border-b-2 border-amber-400 pb-1">Início</a>
+                <a href="#ofertas" class="hover:text-white transition">Ofertas</a>
+                <a href="#ofertas" class="hover:text-white transition">Natal</a>
+            </nav>
+            <i class="fas fa-gift text-amber-400 text-xl"></i>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-red-950 via-[#0b0b0b] to-[#0b0b0b] pt-16 pb-14 px-6 text-center">
+        <p class="text-amber-400 font-extrabold tracking-[0.35em] text-xs uppercase">Black Friday</p>
+        <h1 class="font-natal text-5xl md:text-7xl mt-4 leading-tight">Magia de Natal<br><span class="text-amber-400">com até 30% OFF</span></h1>
+        <p class="text-gray-300 mt-5 max-w-xl mx-auto text-sm md:text-base">
+            Decoração e presentes selecionados para deixar sua casa com cara de Natal. Ofertas por tempo limitado.
+        </p>
+        <a href="#ofertas" class="inline-block mt-8 bg-red-600 hover:bg-red-700 text-white font-extrabold uppercase tracking-widest text-xs px-8 py-4 rounded-full transition shadow-lg shadow-red-900/40">
+            Ver ofertas
+        </a>
+    </section>
+
+    <div class="listras"></div>
+
+    <main id="ofertas" class="max-w-6xl w-full mx-auto px-6 py-14 flex-grow">
+
+        <!-- DADOS DO CLIENTE (usados por todos os botões) -->
+        <div class="bg-[#141414] border border-white/10 rounded-2xl p-5 mb-10 grid md:grid-cols-2 gap-3">
+            <div class="md:col-span-2">
+                <p class="text-xs font-extrabold uppercase tracking-widest text-amber-400">Dados do cliente</p>
+                <p class="text-[11px] text-gray-500">Preencha antes de usar os botões de ação.</p>
+            </div>
+            <input type="text" id="cust-name" placeholder="Nome completo"
+                class="px-4 py-3 bg-black border border-white/15 rounded-xl text-sm placeholder:text-gray-500 focus:outline-none focus:border-amber-400 transition">
+            <input type="tel" id="cust-phone" placeholder="WhatsApp com DDD (ex: 83 98149-2485)"
+                class="px-4 py-3 bg-black border border-white/15 rounded-xl text-sm placeholder:text-gray-500 focus:outline-none focus:border-amber-400 transition">
+        </div>
+
+        <!-- CABEÇALHO DO CARROSSEL -->
+        <div class="flex items-end justify-between mb-8">
+            <div>
+                <p class="text-amber-400 text-[10px] font-extrabold uppercase tracking-[0.3em]">Seleção especial</p>
+                <h2 class="text-2xl md:text-3xl font-extrabold mt-1">Presentes de Natal</h2>
+            </div>
+            <div class="flex space-x-2">
+                <button onclick="moverCarrossel(-1)" aria-label="Anterior" class="w-10 h-10 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition flex items-center justify-center">
+                    <i class="fas fa-chevron-left text-xs"></i>
+                </button>
+                <button onclick="moverCarrossel(1)" aria-label="Próximo" class="w-10 h-10 rounded-full border border-white/20 hover:border-amber-400 hover:text-amber-400 transition flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="carrossel" class="flex overflow-x-auto snap-x snap-mandatory gap-5 pb-4 scrollbar-none scroll-smooth items-start"></div>
+    </main>
+
+    <footer class="listras mt-auto"></footer>
+    <footer class="bg-[#0b0b0b] text-gray-500 text-center py-6 text-xs">
+        © 2026 Blip &amp; Camicado. Todos os direitos reservados.
+    </footer>
+
+    <!-- NOTIFICAÇÃO (TOAST) -->
+    <div id="toast-alert" class="fixed top-6 right-6 z-[60] bg-[#141414] text-white p-4 rounded-xl shadow-2xl border-l-4 border-amber-400 max-w-sm hidden flex items-start gap-3">
+        <i class="fas fa-bell text-amber-400 mt-0.5"></i>
+        <div>
+            <p class="font-bold text-xs uppercase tracking-wider">Aviso</p>
+            <p id="toast-msg" class="text-[11px] text-gray-300 mt-1 leading-normal"></p>
+        </div>
+    </div>
+
+    <script>
+        // ===== CATÁLOGO (ajuste nomes, preços e imagens aqui) =====
+        const PRODUTOS = [
+            { nome: 'Igreja de Natal', detalhe: 'Item decorativo • 30 cm',
+              img: 'https://blipmediastore.blob.core.windows.net/public-medias/Media_f9a15710-68c3-47a7-b86e-49decf0d6071',
+              preco: 139.90, de: 169.90 },
+            { nome: 'Conjunto Prato e Copo', detalhe: 'Mesa posta',
+              img: 'https://blipmediastore.blob.core.windows.net/public-medias/Media_8d798812-f08b-4e33-9dc1-5b00c55715a2',
+              preco: 79.90, de: 99.90 },
+            { nome: 'Cafeteira', detalhe: 'Cafeteira',
+              img: 'https://blipmediastore.blob.core.windows.net/public-medias/Media_f30b1335-e231-4d9f-8096-b4c7a5a0c2fe',
+              preco: 149.90, de: 189.90 },
+            { nome: 'Capivara de Natal', detalhe: 'Item decorativo • 20 cm',
+              img: 'https://blipmediastore.blob.core.windows.net/public-medias/Media_d561a03c-6b45-4c23-8f8b-2dae5d40cc34',
+              preco: 89.90, de: 109.90 },
+            { nome: 'Jarra com Flores', detalhe: 'Decoração de casa',
+              img: 'https://blipmediastore.blob.core.windows.net/public-medias/Media_4dac4608-ec25-42ea-bad6-b3e5bd8a24e3',
+              preco: 119.90, de: 149.90 },
+            { nome: 'Trem de Natal', detalhe: 'Item decorativo • 15 cm',
+              img: 'https://blipmediastore.blob.core.windows.net/public-medias/Media_979c8ae2-9f13-4ffa-a4ed-271e0734c615',
+              preco: 74.90, de: 94.90 }
+        ];
+
+        // ===== AÇÕES (cada uma vira um botão no card) =====
+        const ACOES = [
+            { evento: 'pedido',     label: 'Pedido feito',        icone: 'fa-cart-shopping', cor: 'bg-amber-400 hover:bg-amber-300 text-black' },
+            { evento: 'confirmado', label: 'Confirmar pedido',    icone: 'fa-circle-check',  cor: 'bg-emerald-600 hover:bg-emerald-500 text-white' },
+            { evento: 'carrinho',   label: 'Carrinho abandonado', icone: 'fa-heart-crack',   cor: 'bg-red-700 hover:bg-red-600 text-white' },
+            { evento: 'despacha',   label: 'Despachado',          icone: 'fa-truck',         cor: 'bg-blue-700 hover:bg-blue-600 text-white' },
+            { evento: 'confirma',   label: 'Entrega concluída',   icone: 'fa-box-open',      cor: 'bg-purple-700 hover:bg-purple-600 text-white' }
+        ];
+
+        // ===== ESTADO =====
+        let produtoAberto = null;
+
+        const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        const desconto = p => Math.round((1 - p.preco / p.de) * 100);
+
+        // ===== CARROSSEL =====
+        function renderCarrossel() {
+            const el = document.getElementById('carrossel');
+            const posicao = el.scrollLeft;
+
+            el.innerHTML = PRODUTOS.map((p, i) => {
+                const aberto = produtoAberto === i;
+                return `
+                <article class="snap-start shrink-0 w-72 md:w-80 bg-[#141414] border ${aberto ? 'border-amber-400' : 'border-white/10'} rounded-3xl overflow-hidden flex flex-col transition">
+                    <button onclick="alternarProduto(${i})" class="text-left flex flex-col flex-grow">
+                        <div class="relative bg-[#f7f1e3] aspect-square">
+                            <img src="${p.img}" alt="${p.nome}" loading="lazy" class="w-full h-full object-contain p-6">
+                            <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full">-${desconto(p)}%</span>
+                        </div>
+                        <div class="px-5 pt-5">
+                            <p class="text-[10px] uppercase tracking-widest text-amber-400 font-bold">${p.detalhe}</p>
+                            <h3 class="text-lg font-bold mt-1">${p.nome}</h3>
+                            <div class="mt-3 flex items-baseline gap-2">
+                                <span class="text-xl font-extrabold">${brl(p.preco)}</span>
+                                <span class="text-xs text-gray-500 line-through">${brl(p.de)}</span>
+                            </div>
+                        </div>
+                    </button>
+
+                    <div class="p-5 pt-5">
+                        ${aberto ? botoesAcao(i) : `
+                            <button onclick="alternarProduto(${i})" class="w-full border border-white/20 hover:border-amber-400 hover:text-amber-400 py-3 rounded-xl font-bold uppercase tracking-widest text-[11px] transition">
+                                Ver ações
+                            </button>`}
+                    </div>
+                </article>`;
+            }).join('');
+
+            el.scrollLeft = posicao;
+        }
+
+        function botoesAcao(i) {
+            return `
+                <p class="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-3">Ações</p>
+                <div class="grid grid-cols-1 gap-2">
+                    ${ACOES.map(a => `
+                        <button id="btn-${i}-${a.evento}" onclick="executarAcao(${i}, '${a.evento}')"
+                            class="${a.cor} disabled:opacity-60 py-2.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider transition flex items-center justify-between">
+                            <span>${a.label}</span>
+                            <i class="fas ${a.icone} text-xs"></i>
+                        </button>`).join('')}
+                </div>
+                <button onclick="alternarProduto(${i})" class="w-full mt-3 text-[10px] text-gray-500 hover:text-white uppercase tracking-widest">
+                    Fechar ações
+                </button>`;
+        }
+
+        function alternarProduto(i) {
+            produtoAberto = produtoAberto === i ? null : i;
+            renderCarrossel();
+        }
+
+        function moverCarrossel(direcao) {
+            const el = document.getElementById('carrossel');
+            const card = el.firstElementChild;
+            if (!card) return;
+            const passo = card.offsetWidth + 20; // largura do card + gap-5
+            el.scrollBy({ left: direcao * passo, behavior: 'smooth' });
+        }
+
+        // ===== VALIDAÇÃO =====
+        function telefoneNormalizado(raw) {
+            let d = String(raw || '').replace(/\D/g, '');
+            if (d.length >= 10 && d.length <= 11) d = '55' + d;
+            return /^55\d{10,11}$/.test(d) ? d : null;
+        }
+
+        function lerCliente() {
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = telefoneNormalizado(document.getElementById('cust-phone').value);
+            if (name.length < 2) { showToast('Preencha o nome do cliente.'); return null; }
+            if (!phone) { showToast('Preencha um WhatsApp válido com DDD.'); return null; }
+            return { name, phone };
+        }
+
+        // ===== AÇÕES =====
+        async function executarAcao(i, evento) {
+            const cliente = lerCliente();
+            if (!cliente) return;
+
+            const acao = ACOES.find(a => a.evento === evento);
+            const botoes = document.querySelectorAll(`[id^="btn-${i}-"]`);
+            const btn = document.getElementById(`btn-${i}-${evento}`);
+
+            botoes.forEach(b => b.disabled = true);
+            const textoOriginal = btn.querySelector('span').innerText;
+            btn.querySelector('span').innerText = 'Enviando...';
+
+            await callApi(evento, {
+                name: cliente.name,
+                phone: cliente.phone,
+                imagem: PRODUTOS[i].img
+            });
+
+            botoes.forEach(b => b.disabled = false);
+            btn.querySelector('span').innerText = textoOriginal;
+        }
+
+        // ===== CHAMADA À AZURE FUNCTION (/api/notificar) =====
+        // A chave do Blip NÃO fica aqui: ela está nas configurações do Azure.
+        async function callApi(evento, dados) {
+            try {
+                const res = await fetch('/api/notificar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ event: evento, ...dados })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (res.ok && data.success) {
+                    showToast('Mensagem enviada no WhatsApp! 📲');
+                    return true;
+                }
+                showToast(`Erro (${res.status}): ${data.error || 'falha ao enviar'}`);
+                console.error('Erro da API:', data);
+                return false;
+            } catch (err) {
+                console.error('Erro de rede:', err);
+                showToast('Erro de conexão com /api/notificar.');
+                return false;
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-alert');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('hidden');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => toast.classList.add('hidden'), 4000);
+        }
+
+        // ===== INICIALIZAÇÃO =====
+        renderCarrossel();
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "blip-camicado-api",
+  "version": "1.0.0",
+  "description": "API de disparos Blip & Camicado",
+  "main": "notificar/index.js",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"Sem testes\" && exit 0"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.0.0",
+    "axios": "^1.18.1"
+  }
+}
