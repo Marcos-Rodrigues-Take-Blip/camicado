@@ -23,6 +23,7 @@ function normalizarTelefone(raw) {
 app.http('notificar', {
     methods: ['POST'],
     authLevel: 'anonymous',
+    
     handler: async (request, context) => {
         try {
             const { event, name, phone, imagem } = await request.json();
@@ -59,7 +60,7 @@ app.http('notificar', {
                 type: 'application/vnd.iris.activecampaign.full-campaign+json',
                 resource: {
                     campaign: {
-                        name: `${evento.campanha} - ${nomeCliente}`,
+                        name: `${evento.campanha} - ${nomeCliente} - ${Date.now()}`,
                         campaignType: 'Individual',
                         flowId: process.env.BLIP_FLOW_ID,
                         stateId: process.env.BLIP_STATE_ID || 'onboarding',
