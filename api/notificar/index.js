@@ -68,10 +68,18 @@ app.http('notificar', {
                         channelType: 'WhatsApp',
                         tags: ['API', 'BlipCamicado', evento.campanha]
                     },
-                    audience: {
-                        recipient: `+${telefone}`,
-                        messageParams: { '0': imagem }
-                    },
+                        audience: {
+                            recipient: `+${telefone}`,
+                            messageParams: {
+                                '0': imagem,
+                                'image': imagem
+                            },
+                            contextVariables: {
+                                image: imagem,
+                                template: evento.template,
+                                canUseTheseValues: false
+                            }
+                        },
                     message: {
                         messageTemplate: evento.template,
                         messageParams: ['0'],
