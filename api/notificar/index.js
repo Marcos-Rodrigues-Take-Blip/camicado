@@ -3,7 +3,7 @@ const axios = require('axios');
 
 // Eventos permitidos -> template aprovado no Blip
 const EVENTOS = {
-    carrinho:   { campanha: 'Carrinho abandonado', template: 'blipcamicadocarrinho' },
+    carrinho:   { campanha: 'Carrinho abandonado', template: 'blipcamicadocarrinho_copia' },
     pedido:     { campanha: 'Pedido feito',        template: 'blipcamicadopedido' },
     confirmado: { campanha: 'Pedido confirmado',   template: 'blippedidoconfirmado' },
     despacha:   { campanha: 'Pedido despachado',   template: 'blipcamicadodespacha' },
